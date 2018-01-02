@@ -2,17 +2,16 @@ version: "3"
 services:
 
   app:
-    image: clojure:latest
+    build:
+      context: .
+      dockerfile: dockerfile
     ports:
       - 3000:3000
       - 7000:7000
-      - 7002:7000
+      - 7002:7002
     volumes:
       - .:/demo-site
-    command: ["tail", "-f", "/dev/null"]
-
-    # ` docker-compose up `
-    # ` docker-compose exec app /bin/sh `
-    # ` lein new luminus app +re-frame +h2 +cider `
+    working_dir: /demo-site/app
+    command: ["lein", "run", "repl"]
 
 
