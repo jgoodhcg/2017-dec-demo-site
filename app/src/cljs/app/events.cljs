@@ -19,6 +19,12 @@
   (fn [db [_ docs]]
     (assoc db :docs docs)))
 
+(reg-event-db
+ :toggle-nav-drawer
+ (fn [db [_ _]]
+      ;; TODO specter please
+      (assoc-in db [:view :nav-drawer] (not (get-in db [:view :nav-drawer])))))
+
 ;;subscriptions
 
 (reg-sub
@@ -30,3 +36,8 @@
   :docs
   (fn [db _]
     (:docs db)))
+
+(reg-sub
+ :nav-drawer
+ (fn [db _]
+   (get-in db [:view :nav-drawer])))

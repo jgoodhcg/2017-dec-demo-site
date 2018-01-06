@@ -1,4 +1,5 @@
 (ns app.db)
 
 (def default-db
-  {:page :home})
+  {:page :home
+   :view {:nav-drawer false}})
