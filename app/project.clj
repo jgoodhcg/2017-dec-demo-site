@@ -25,16 +25,17 @@
                  [org.clojure/tools.logging "0.4.0"]
                  [org.clojure/tools.reader "1.1.1"]
                  [org.webjars.bower/tether "1.4.3"]
-                 [org.webjars/bootstrap "4.0.0-beta.3"]
                  [org.webjars/font-awesome "5.0.2"]
                  [re-frame "0.10.2"]
-                 [reagent "0.7.0"]
+                 [reagent "0.7.0" :exclusions [cljsjs/react cljsjs/react-dom]]
                  [reagent-utils "0.2.1"]
                  [ring-webjars "0.2.0"]
                  [ring/ring-core "1.6.3"]
                  [ring/ring-defaults "0.3.1"]
                  [secretary "1.2.3"]
-                 [selmer "1.11.3"]]
+                 [selmer "1.11.3"]
+                 [cljs-react-material-ui "0.2.43"]
+                 [stylefy "1.2.0"]]
 
   :min-lein-version "2.0.0"
   
