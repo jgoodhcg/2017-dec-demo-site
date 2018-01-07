@@ -10,7 +10,6 @@
             [app.global-styles :as global-styles]
             [markdown.core :refer [md->html]]))
 
-
 (defn blog-page []
   ;; [:div.container
   ;;  (when-let [docs @(rf/subscribe [:docs])]
@@ -21,6 +20,4 @@
 
 (defn blog-list-page []
   [:div "blog-list-page"])
-
-
 

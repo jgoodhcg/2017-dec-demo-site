@@ -28,7 +28,7 @@
    :blog      #'blog-page
    :career    #'career-page})
 
-(def style-base-page {:background-color  (color :grey)})
+(def style-base-page {:background-color (color :grey)})
 
 (defn page []
   [ui/mui-theme-provider
@@ -65,9 +65,9 @@
 (defn hook-browser-navigation! []
   (doto (History.)
     (events/listen
-      HistoryEventType/NAVIGATE
-      (fn [event]
-        (secretary/dispatch! (.-token event))))
+     HistoryEventType/NAVIGATE
+     (fn [event]
+       (secretary/dispatch! (.-token event))))
     (.setEnabled true)))
 
 ;; -------------------------

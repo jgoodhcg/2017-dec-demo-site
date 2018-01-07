@@ -20,18 +20,18 @@
   ;;           clockCircleColor: fade(darkBlack, 0.07),
   ;;           shadowColor: fullBlack,
   ;;           },
- {:text-color (color :darkBlack)
-  :primary1Color (color :blue800)
-  :primary2Color (color :blue900)
-  :alternateTextColor (color :grey50)})
+  {:text-color         (color :darkBlack)
+   :primary1Color      (color :blue800)
+   :primary2Color      (color :blue900)
+   :alternateTextColor (color :grey50)})
 
 (def phone-width 571)
 
-(def style-responsive-show-on-phone {:display "none"
+(def style-responsive-show-on-phone {:display        "none"
                                      ::stylefy/media {{:max-width (str phone-width "px")}
-                                                             {:display "flex"}}})
+                                                      {:display "flex"}}})
 
-(def style-responsive-hide-on-phone {:display "none"
+(def style-responsive-hide-on-phone {:display        "none"
                                      ::stylefy/media {{:min-width (str (+ 1 phone-width) "px")}
                                                       {:display "flex"}}})
 
