@@ -24,9 +24,11 @@
 (def nav-links [{:title "Apps"   :uri "#/apps"   :page :apps
                  :icon-nav [ic/navigation-apps style-nav-svg-icon]
                  :icon-drawer [ic/navigation-apps]}
+
                 {:title "Blog"   :uri "#/blog"   :page :blog-list
                  :icon-nav [ic/action-description style-nav-svg-icon]
                  :icon-drawer [ic/action-description]}
+
                 {:title "Career" :uri "#/career" :page :career
                  :icon-nav [ic/action-work style-nav-svg-icon]
                  :icon-drawer [ic/action-work]}])
@@ -43,7 +45,8 @@
 
 (defn nav-link-drawer [{:keys [uri title page current-page icon-drawer]}]
   [ui/menu-item {:key (str title uri page "drawer")
-                 :leftIcon (r/as-element [ui/svg-icon icon-drawer]) ;; TODO icon should be 'clickable'
+                 :leftIcon (r/as-element [ui/svg-icon icon-drawer]) ;; TODO icon should part of the link
+                 :onClick #(rf/dispatch [:toggle-nav-drawer])
                  :children (r/as-element [:a {:href uri
                                               :style {:text-decoration "none"
                                                       :color (:text-color global-styles/palette)}}
@@ -68,12 +71,9 @@
       (->> nav-links
            (map #(nav-link-drawer (merge {:current-page current-page} %))))]
 
-     [ui/flat-button {:href "#/" :label "Justin Good"
-                      :icon (r/as-element [ui/svg-icon [ic/social-person style-nav-svg-icon]])
-                      :style (merge
-                              {:color (:alternateTextColor global-styles/palette)}
-                              (when (= :home current-page)
-                                {:background-color (:primary2Color global-styles/palette)}))}]
+     (->> {:title "Justin Good" :uri "#/" :page :home :current-page current-page
+           :icon-nav [ic/social-person style-nav-svg-icon]}
+          (nav-link-app-bar))
 
      [:div (stylefy/use-style global-styles/style-responsive-hide-on-phone)
       (->> nav-links
