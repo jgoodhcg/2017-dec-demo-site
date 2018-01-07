@@ -11,12 +11,12 @@
 
 (def style-image-break 1000)
 
-(def style-home-page {:display "flex" :flex-wrap "nowrap"
-                      :align-items "stretch"
+(def style-home-page {:display         "flex" :flex-wrap "nowrap"
+                      :align-items     "stretch"
                       :justify-content "center"
-                      :flex-direction :row
-                      ::stylefy/media {{:max-width (str style-image-break "px")}
-                                       {:flex-direction :column}}})
+                      :flex-direction  :row
+                      ::stylefy/media  {{:max-width (str style-image-break "px")}
+                                        {:flex-direction :column}}})
 
 (defn home-page []
 
@@ -31,6 +31,5 @@
 
    [:div {:style {:display "flex" :flex "0 1 auto"}}
     [ui/paper {:style {:padding "1em"
-                       :width "100%"}}
-     [:div [:p "this is some bio this content has a bunch more stuff"]]]]
-   ])
+                       :width   "100%"}}
+     [:div [:p "this is some bio this content has a bunch more stuff"]]]]])
