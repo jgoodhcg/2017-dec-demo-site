@@ -9,12 +9,14 @@
              [stylefy.core :as stylefy]
              [app.global-styles :as global-styles]))
 
-(def style-image-break 717)
+(def style-image-break 1000)
 
 (def style-home-page {:display "flex" :flex-wrap "nowrap"
                       :align-items "stretch"
                       :justify-content "center"
-                      :flex-direction "column"})
+                      :flex-direction :row
+                      ::stylefy/media {{:max-width (str style-image-break "px")}
+                                       {:flex-direction :column}}})
 
 (defn home-page []
 
