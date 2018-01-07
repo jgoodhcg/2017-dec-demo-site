@@ -17,27 +17,34 @@
             [app.global-styles :as global-styles])
   (:import goog.History))
 
-(defn about-page []
-  [:div.container
-   [:div.row
-    [:div.col-md-12
-     [:img {:src (str js/context "/img/warning_clojure.png")}]]]])
+(defn apps-page []
+  [:div "apps-page"])
 
-(defn home-page []
-  [ui/paper [:div [:p "hello material ui paper"]]]
+(defn blog-page []
   ;; [:div.container
   ;;  (when-let [docs @(rf/subscribe [:docs])]
   ;;    [:div.row>div.col-sm-12
   ;;     [:div {:dangerouslySetInnerHTML
   ;;            {:__html (md->html docs)}}]])]
-  )
+  [:div "blog page"])
+
+(defn blog-list-page []
+  [:div "blog-list-page"])
+
+(defn career-page []
+  [:div "career-page"])
+
+(defn home-page []
+  [ui/paper [:div [:p "hello material ui paper"]]])
 
 (def pages
-  {:home #'home-page
-   :about #'about-page})
+  {:home      #'home-page
+   :apps      #'apps-page
+   :blog-list #'blog-list-page
+   :blog      #'blog-page
+   :career    #'career-page})
 
-(def style-base-page {:background-color  (color :grey)
-                      :height "100%"})
+(def style-base-page {:background-color  (color :grey)})
 
 (defn page []
   [ui/mui-theme-provider
@@ -57,6 +64,14 @@
 
 (secretary/defroute "/apps" []
   (rf/dispatch [:set-active-page :apps]))
+
+(secretary/defroute "/blog" []
+  (rf/dispatch [:set-active-page :blog-list]))
+
+;; (secretary/defroutes "/blog/:id" [id]
+;;   (rf/dispatch [:set-ative-page :blog])
+;;   ;; (rf/dispatch [:load-blog id])
+;;   )
 
 (secretary/defroute "/career" []
   (rf/dispatch [:set-active-page :career]))
