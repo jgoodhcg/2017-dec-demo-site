@@ -14,28 +14,12 @@
             [cljs-react-material-ui.icons :as ic]
             [stylefy.core :as stylefy]
             [app.nav :as nav]
-            [app.global-styles :as global-styles])
+            [app.global-styles :as global-styles]
+            [app.pages.home :refer [home-page]]
+            [app.pages.apps :refer [apps-page]]
+            [app.pages.blog :refer [blog-list-page blog-page]]
+            [app.pages.career :refer [career-page]])
   (:import goog.History))
-
-(defn apps-page []
-  [:div "apps-page"])
-
-(defn blog-page []
-  ;; [:div.container
-  ;;  (when-let [docs @(rf/subscribe [:docs])]
-  ;;    [:div.row>div.col-sm-12
-  ;;     [:div {:dangerouslySetInnerHTML
-  ;;            {:__html (md->html docs)}}]])]
-  [:div "blog page"])
-
-(defn blog-list-page []
-  [:div "blog-list-page"])
-
-(defn career-page []
-  [:div "career-page"])
-
-(defn home-page []
-  [ui/paper [:div [:p "hello material ui paper"]]])
 
 (def pages
   {:home      #'home-page
@@ -68,10 +52,9 @@
 (secretary/defroute "/blog" []
   (rf/dispatch [:set-active-page :blog-list]))
 
-;; (secretary/defroutes "/blog/:id" [id]
-;;   (rf/dispatch [:set-ative-page :blog])
-;;   ;; (rf/dispatch [:load-blog id])
-;;   )
+(secretary/defroute "/blog/:id" [id]
+  (rf/dispatch [:set-ative-page :blog])
+  (rf/dispatch [:load-blog id]))
 
 (secretary/defroute "/career" []
   (rf/dispatch [:set-active-page :career]))

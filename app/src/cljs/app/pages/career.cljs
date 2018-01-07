@@ -1,4 +1,4 @@
-(ns app.pages.apps
+(ns app.pages.career
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
             [app.events]
@@ -9,5 +9,6 @@
             [stylefy.core :as stylefy]
             [app.global-styles :as global-styles]))
 
-(defn apps-page []
-  [:div "apps-page"])
+(defn career-page []
+  [:div "career-page"])
+
