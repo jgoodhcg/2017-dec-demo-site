@@ -9,19 +9,26 @@
              [stylefy.core :as stylefy]
              [app.global-styles :as global-styles]))
 
+(def style-image-break 717)
+
+(def style-home-page {:display "flex" :flex-wrap "nowrap"
+                      :align-items "stretch"
+                      :justify-content "center"
+                      :flex-direction "column"})
+
 (defn home-page []
 
-  [:div {:style {:display "flex" :flex-wrap "nowrap"
-                 :justify-content "center"}}
+  [:div (stylefy/use-style style-home-page)
 
-   [:div {:style {:display "flex" :flex "0 1 40%"}}
+   [:div {:style {:display "flex" :flex "0 1 auto"}}
     [ui/card
      [ui/card-media [:img {:src
                            ;; (str js/context "/img/file-name-in-resources-public-img.jpg")
                            "https://dummyimage.com/1600x900/1568c0/ffffff.jpg&text=A+nice+picture+of+me"
                            :alt "a decent picture of myself"}]]]]
 
-   [:div {:style {:display "flex" :flex "0 0 auto"}}
-    [ui/paper {:style {:padding "1em"}}
+   [:div {:style {:display "flex" :flex "0 1 auto"}}
+    [ui/paper {:style {:padding "1em"
+                       :width "100%"}}
      [:div [:p "this is some bio this content has a bunch more stuff"]]]]
    ])
